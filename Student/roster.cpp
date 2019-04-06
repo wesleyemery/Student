@@ -15,11 +15,15 @@ using namespace std;
 
 int main() {
 	
-	cout << "Course title: C867, Programming Language Used: C++, Student ID: 000614343, Author: Wesley Emery" << endl;
+	cout << "Course title: Scripting and Programming Applications — C867, Programming Language Used: C++, Student ID: 000614343, Author: Wesley Emery" << endl;
 	roster classroster;
 
-	const string studentData[] ={ "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY","A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK","A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-	"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY","A5,Wesley,Emery,wemery@wgu.edu,33,15,12,11,39,SOFTWARE" };
+	const string studentData[] ={ 
+		"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+		"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+		"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+		"A5,Wesley,Emery,wemery@wgu.edu,33,15,12,11,39,SOFTWARE" };
 	
 	for (int i = 0; i < 5; i++) {
 		string s = studentData[i];
@@ -94,11 +98,12 @@ void roster::remove(string studentIdentification)
 void roster::printAll()
 {
 
-	int i;
-	for (i = 0; i < 5; i++) {
-		(*classRosterArray[i]).print();
+	for (int i = 0; i < 5; i++) {
+		if (classRosterArray[i] != nullptr) {
+			(*classRosterArray[i]).print();
+
+		}
 	}
-	cout << endl;
 }
 
 void roster::printDaysInCourse(string studentIdentification)
