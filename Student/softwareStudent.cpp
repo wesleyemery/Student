@@ -12,15 +12,18 @@ Degree softwareStudent::getDegreeProgram()
 
 void softwareStudent::print()
 {
+	cout << getStudentID() << "\t";
 	cout << "First name: " << getFirstName() << "\t";
 	cout << "Last name: " << getLastName() << "\t";
 	cout << "Age: " << getAge() << "\t";
-	cout << "Days in Course: " << getDaysToComplete() << "\t";
-	cout << "Degree program: " << getDegreeProgram() << "\t";
+	cout << "\t Days in Course: " << getDaysToComplete()[0] << "\t";
+	cout << "Days in Course: " << getDaysToComplete()[1] << "\t";
+	cout << "Days in Course: " << getDaysToComplete()[2] << "\t";
+	cout << "Degree program: Software" << endl;
 }
 
 softwareStudent::softwareStudent(string studentIdentification, string fName, string lName, string email, int studentAge, int * daysComplete, Degree degreeType)
 	: student(fName, lName, email, studentIdentification, studentAge, daysComplete)
 {
-	degreeType = this->degree;
+	degree = degreeType;
 }

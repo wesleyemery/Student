@@ -12,11 +12,14 @@ Degree networkStudent::getDegreeProgram()
 
 void networkStudent::print()
 {
-	cout << "Student ID: " << getStudentID() << "\t";
-	cout << "First name: " << getFirstName() << "\t" << "Last name: " << getLastName() << "\t";
-	cout << "Age: " << getAge() << "\t" << "Days in Course: " << getDaysToComplete() << "\t";
-	cout << "Days in course: " << getDaysToComplete()[0] << ", " << getDaysToComplete()[1] << ", " << getDaysToComplete()[2] << "\t";
-	cout << "Degree program: " << getDegreeProgram() << "\t";
+	cout << getStudentID() << "\t";
+	cout << "First name: " << getFirstName() << "\t";
+	cout << "Last name: " << getLastName() << "\t";
+	cout << "Age: " << getAge() << "\t";
+	cout << "\t Days in Course: " << getDaysToComplete()[0] << "\t";
+	cout << "Days in Course: " << getDaysToComplete()[1] << "\t";
+	cout << "Days in Course: " << getDaysToComplete()[2] << "\t";
+	cout << "Degree program: Network" << endl;
 }
 
 networkStudent::networkStudent(string studentIdentification, string fName, string lName, string email, int studentAge, int * daysComplete, Degree degreeType)

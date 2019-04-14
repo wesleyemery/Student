@@ -4,6 +4,7 @@ class roster
 {
 private:
 	student* classRosterArray[5];
+	int index = 0; 
 
 public:
 	roster();
