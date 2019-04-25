@@ -14,8 +14,12 @@ using namespace std;
 
 
 int main() {
-	
-	cout << "Course title: Scripting and Programming Applications C867, Programming Language Used: C++, Student ID: 000614343, Author: Wesley Emery" << endl;
+	cout << "|********************  Student Info  ********************|" << endl;
+	cout << "Course title: Scripting and Programming Applications C867" << endl;
+	cout << "Programming Language Used: C++" << endl;   
+	cout << "Student ID : 000614343" << endl;
+	cout <<  "Author : Wesley Emery" << endl;
+
 	roster classroster;
 
 	const string studentData[] ={ 
@@ -27,7 +31,6 @@ int main() {
 	
 	for (int i = 0; i < 5; i++) {
 		string s = studentData[i];
-		/*parse temp and break it into comma delimited. Change the string to the appropriate variable. Assign varibles for each token. Parsers are very common for parsing string.*/
 		string delimiter = ",";
 
 		int index = 0;
@@ -58,8 +61,17 @@ int main() {
 		classroster.add(tmpstring[0], tmpstring[1], tmpstring[2], tmpstring[3], stoi(tmpstring[4]), stoi(tmpstring[5]), stoi(tmpstring[6]), stoi(tmpstring[7]), test );
 
 	 }
+	cout << endl << "|***********************************************  Student Roster  ****************************************************|" << endl;
+	classroster.printAll();
+	cout << endl << "|***********************************************  Student Average Days  ****************************************************|" << endl;
+	for (int j = 0; j < 5; j++) {
+		classroster.printDaysInCourse(classroster.getClassRosterArray()[j]->getStudentID());
+	}
+	//loop through all of the student Id's
+	cout << endl << "|***********************************************  Student by Degree  ****************************************************|" << endl;
+	classroster.printByDegreeProgram(SOFTWARE);
 	
-	classroster.printDaysInCourse("A2");
+	//classroster.printInvalidEmails();
 	
 
 	
@@ -112,7 +124,7 @@ void roster::remove(string studentIdentification)
 
 void roster::printAll()
 {
-	for (int i = 0; i < sizeof(classRosterArray); i++) {
+	for (int i = 0; i < 5; i++) {
 		if (classRosterArray[i] != nullptr) {
 			classRosterArray[i]->print();
 
@@ -125,8 +137,8 @@ void roster::printDaysInCourse(string studentIdentification)
 	for (int i = 0; i < 5; i++) {
 		if (classRosterArray[i]->getStudentID() == studentIdentification) {
 			float sum = 0.0;
-			for (int i = 0; i < 3; i++) {
-				sum += classRosterArray[i]->getDaysToComplete()[i];
+			for (int j = 0; j < 3; j++) {
+				sum += classRosterArray[i]->getDaysToComplete()[j];
 			}
 			sum = sum / 3;
 			cout << "Student ID: " << studentIdentification << "\t Name: " <<  classRosterArray[i]->getFirstName() << " " << classRosterArray[i]->getLastName() << "\t Average days in course: " << sum << endl; 
@@ -135,21 +147,30 @@ void roster::printDaysInCourse(string studentIdentification)
 	}
 	
 }
-
+//Verifies student email addresses and displays all invalid email addresses to the user
 void roster::printInvalidEmails()
 {
-/*	for (int i = 0; i > sizeof(classRosterArray); i++) {
+	
+	for (int i = 0; i > 5; i++) {
 		string email = classRosterArray[i]->getEmailAddress();
-		if (email.find("@" )
-	}*/
+		if (email.find("@") != string::npos) {
+			cout << "The email for student: " << classRosterArray[i]->getFirstName() << " " << classRosterArray[i]->getLastName() << " is not valid: " << email << endl;
+		}
+	}
+	//A valid email should include an at sign ('@') and period ('.') and should not include a space (' ')
 }
 
 void roster::printByDegreeProgram(Degree degreeProgram)
 {
-	for (int i = 0; i > sizeof(classRosterArray); i++)
-		if (classRosterArray[i]->getDegreeProgram() == degreeProgram)
+	for (int i = 0; i < 5; i++) {
+		if (classRosterArray[i]->getDegreeProgram() == degreeProgram) {
 			classRosterArray[i]->print();
-	
+		}
+	}
 }
 
-/* Sudocode for functions*/
+student ** roster::getClassRosterArray()
+{
+	return classRosterArray;
+}
+

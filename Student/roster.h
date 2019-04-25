@@ -14,6 +14,7 @@ public:
 	void printDaysInCourse(string studentIdentification);
 	void printInvalidEmails();
 	void printByDegreeProgram(Degree degreeProgram);
+	student** getClassRosterArray();
 
 };
 

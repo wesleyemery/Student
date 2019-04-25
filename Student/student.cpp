@@ -36,12 +36,10 @@ string student::getStudentID()
 }
 
 //Mutators 
-void student::setDaysToComplete(int day1, int day2, int day3)
-{
+void student::setDaysToComplete(int day1, int day2, int day3){
 	this->daysToComplete[0] = day1;
 	this->daysToComplete[1] = day2;
 	this->daysToComplete[2] = day3;
-
 }
 
 void student::setAge(int studentAge)

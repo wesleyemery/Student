@@ -7,7 +7,7 @@ using namespace std;
 
 Degree networkStudent::getDegreeProgram()
 {
-	return this->degree;
+	return degree;
 }
 
 void networkStudent::print()

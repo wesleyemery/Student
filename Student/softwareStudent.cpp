@@ -23,7 +23,7 @@ void softwareStudent::print()
 }
 
 softwareStudent::softwareStudent(string studentIdentification, string fName, string lName, string email, int studentAge, int * daysComplete, Degree degreeType)
-	: student(fName, lName, email, studentIdentification, studentAge, daysComplete)
+	: student(studentIdentification, fName, lName, email, studentAge, daysComplete)
 {
 	degree = degreeType;
 }
