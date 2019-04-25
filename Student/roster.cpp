@@ -1,13 +1,13 @@
 #include "pch.h"
-#include "networkStudent.h"
-#include "softwareStudent.h"
-#include "securityStudent.h"
 #include "roster.h"
 #include "degree.h"
 #include "student.h"
+#include "networkStudent.h"
+#include "softwareStudent.h"
+#include "securityStudent.h"
+
 #include <iostream>
 #include <string>
-
 
 
 using namespace std;
@@ -63,15 +63,17 @@ int main() {
 	 }
 	cout << endl << "|***********************************************  Student Roster  ****************************************************|" << endl;
 	classroster.printAll();
-	cout << endl << "|***********************************************  Student Average Days  ****************************************************|" << endl;
+	cout << endl << "|***********************************************  Print Invalid Emails  ****************************************************|" << endl;
+	classroster.printInvalidEmails();
+	cout << endl << "|***********************************************  Student Average Days  **************************************************|" << endl;
 	for (int j = 0; j < 5; j++) {
 		classroster.printDaysInCourse(classroster.getClassRosterArray()[j]->getStudentID());
 	}
-	//loop through all of the student Id's
 	cout << endl << "|***********************************************  Student by Degree  ****************************************************|" << endl;
 	classroster.printByDegreeProgram(SOFTWARE);
-	
-	//classroster.printInvalidEmails();
+	cout << endl << "|*************************************************  Remove Student ******************************************************|" << endl;
+	classroster.remove("A3");
+	classroster.remove("A3");
 	
 
 	
@@ -110,15 +112,18 @@ void roster::add(string studentID, string firstName, string lastName, string ema
 
 void roster::remove(string studentIdentification)
 {
-	
-	for (int i = 0; i < sizeof(classRosterArray); i++) {
-		if (classRosterArray[i]->getStudentID() == studentIdentification) {
-			classRosterArray[i] = nullptr;
-		}
-		else {
-			cout << "Error student was not found." << endl;
-		}
+	bool value = false;
 
+	for (int i = 0; i < 5; i++) {
+		if (classRosterArray[i] != nullptr && classRosterArray[i]->getStudentID() == studentIdentification) {
+			cout << "Deleting student ID: " << studentIdentification << endl;
+			classRosterArray[i] = nullptr;
+			value = true; 
+			
+		}
+	}
+	if (value != true) {
+		cout << "Error: Student ID: " << studentIdentification << " not found." << endl; 
 	}
 }
 
@@ -151,9 +156,9 @@ void roster::printDaysInCourse(string studentIdentification)
 void roster::printInvalidEmails()
 {
 	
-	for (int i = 0; i > 5; i++) {
+	for (int i = 0; i < 5; i++) {
 		string email = classRosterArray[i]->getEmailAddress();
-		if (email.find("@") != string::npos) {
+		if ((email.find("@") == string::npos) || (email.find(" ") != string::npos) || (email.find(".") == string::npos)) {
 			cout << "The email for student: " << classRosterArray[i]->getFirstName() << " " << classRosterArray[i]->getLastName() << " is not valid: " << email << endl;
 		}
 	}
